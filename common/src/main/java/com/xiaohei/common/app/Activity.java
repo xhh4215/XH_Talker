@@ -20,13 +20,11 @@ public abstract class Activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 在界面未初始化之前调用的初始化窗口
-        initWidows();
-
+          initWidows();
         if (initArgs(getIntent().getExtras())) {
             // 得到界面Id并设置到Activity界面中
             int layId = getContentLayoutId();
             setContentView(layId);
-
             initWidget();
             initData();
         } else {
@@ -62,6 +60,7 @@ public abstract class Activity extends AppCompatActivity {
      * 初始化控件
      */
     protected void initWidget() {
+
         ButterKnife.bind(this);
     }
 
