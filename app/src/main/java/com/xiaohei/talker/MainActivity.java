@@ -1,14 +1,18 @@
 package com.xiaohei.talker;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.xiaohei.common.app.Activity;
 import com.xiaohei.common.widget.PortraitView;
 
@@ -16,7 +20,7 @@ import butterknife.BindView;
 
 import butterknife.OnClick;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity  {
     @BindView(R.id.appbar)
     View mLayAppbar;
     @BindView(R.id.im_portrait)
@@ -36,9 +40,13 @@ public class MainActivity extends Activity {
     @Override
     protected void initWidget() {
         super.initWidget();
+        //Gilde图片加载框架
         Glide.with(this)
+                //要加载的图片
                 .load(R.drawable.bg_src_morning)
+                //剪切的方式
                 .centerCrop()
+                //图片加载的目标
                 .into(new ViewTarget<View, GlideDrawable>(mLayAppbar) {
                     @Override
                     public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
@@ -61,4 +69,5 @@ public class MainActivity extends Activity {
     @OnClick(R.id.btn_action)
     public void onActionClick() {
     }
+
 }
