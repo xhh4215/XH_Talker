@@ -69,9 +69,11 @@
         android:layout_height="@dimen/len_52"
         android:layout_marginEnd="@dimen/len_16"
         android:layout_marginBottom="@dimen/len_68"
+
         android:padding="@dimen/len_20"
         android:src="@drawable/ic_group_add"
         android:tint="@color/white"
+        android:translationY="@dimen/len_76"
         app:layout_anchor="@id/lay_container"
         app:layout_anchorGravity="bottom|end" />
 
@@ -83,10 +85,12 @@
         android:background="@color/white"
         android:elevation="@dimen/len_4"
         android:outlineProvider="bounds"
-        app:itemIconTint="@color/text_nav"
         android:translationZ="@dimen/len_8"
+        app:itemIconTint="@color/text_nav"
         app:itemTextColor="@color/text_nav"
-        app:menu="@menu/navigation_items" />
+        app:menu="@menu/navigation_items"
+        tools:targetApi="lollipop"
+        tools:visibility="invisible" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

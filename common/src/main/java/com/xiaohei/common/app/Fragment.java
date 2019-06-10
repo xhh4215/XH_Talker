@@ -2,8 +2,10 @@ package com.xiaohei.common.app;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,12 @@ import butterknife.Unbinder;
 
 /**
  * @author qiujuer
+ * FragmentManager的几个基本操作
+ * Add ：往容器中添加一个Fragemnt
+ * Replace：替换容器中的Fragment
+ * Hide/Show：存粹的隐藏与显示，不移除
+ * Attach/Detach： 从布局中移除，但存储在缓存队列中
+ * Remove：直接移除，并不缓存
  */
 
 public abstract class Fragment extends androidx.fragment.app.Fragment {

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyTalker</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="textContact">Hello Contact</string>
+    <string name="textGroup">Hello Group</string>
+    <string name="textActive">Hello  Active</string>
 </resources>
