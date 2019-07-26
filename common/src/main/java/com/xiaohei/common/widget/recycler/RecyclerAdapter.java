@@ -17,8 +17,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder<Data>> implements View.OnClickListener, View.OnLongClickListener
-        , AdapterCallback {
+public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder<Data>> implements View.OnClickListener, View.OnLongClickListener, AdapterCallback<Data> {
     private AdapterListener<Data> mListener;
     //保存数据的集合
     private final List<Data> mDataList;
@@ -105,6 +104,24 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
      * @return XML文件的id 用于创建ViewHolder
      */
     protected abstract int getItemViewType(int position, Data data);
+
+    /***
+     * 数据更新
+     * @param data
+     * @param holder
+     */
+    @Override
+    public void update(Data data, ViewHolder<Data> holder) {
+        //得到当前的view holder的坐标
+        int pos = holder.getAdapterPosition();
+        if (pos >= 0) {
+            //进行数据的移除与更新
+            mDataList.remove(pos);
+            mDataList.add(pos, data);
+            //提醒数据更新
+            notifyItemChanged(pos);
+        }
+    }
 
     /***
      * 点击事件的处理
@@ -264,6 +281,25 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
             if (this.callback != null) {
                 this.callback.update(data, this);
             }
+        }
+    }
+
+    /**
+     * 对回调接口做一次实现AdapterListener
+     *
+     * @param <Data>
+     */
+    public static abstract class AdapterListenerImpl<Data> implements AdapterListener<Data> {
+
+
+        @Override
+        public void onItemCLick(ViewHolder holder, Data data) {
+
+        }
+
+        @Override
+        public void onItemLongCLick(ViewHolder holder, Data data) {
+
         }
     }
 }

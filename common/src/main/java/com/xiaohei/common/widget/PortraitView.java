@@ -5,6 +5,10 @@ import android.util.AttributeSet;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
+ */
 public class PortraitView extends CircleImageView {
     public PortraitView(Context context) {
         super(context);
