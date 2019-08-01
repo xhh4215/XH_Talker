@@ -13,16 +13,12 @@ import com.xiaohei.common.app.Fragment;
 import com.xiaohei.common.widget.GalleryView;
 import com.xiaohei.talker.R;
 
-import butterknife.BindView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ActiveFragment extends Fragment {
-    @BindView(R.id.galleyView)
-    GalleryView mGallery;
-
     public ActiveFragment() {
         // Required empty public constructor
     }
@@ -46,30 +42,30 @@ public class ActiveFragment extends Fragment {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED&&ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         } else {
-            mGallery.setup(getLoaderManager(), new GalleryView.SelectedChangeListener() {
-                @Override
-                public void onSelectedCountChanged(int count) {
-
-                }
-            });
+//            mGallery.setup(getLoaderManager(), new GalleryView.SelectedChangeListener() {
+//                @Override
+//                public void onSelectedCountChanged(int count) {
+//
+//                }
+//            });
         }
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case 1:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mGallery.setup(getLoaderManager(), new GalleryView.SelectedChangeListener() {
-                        @Override
-                        public void onSelectedCountChanged(int count) {
-
-                        }
-                    });
-                } else {
-                    Toast.makeText(getContext(), "没有权限", Toast.LENGTH_LONG).show();
-                }
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        switch (requestCode) {
+//            case 1:
+//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+////                    mGallery.setup(getLoaderManager(), new GalleryView.SelectedChangeListener() {
+////                        @Override
+////                        public void onSelectedCountChanged(int count) {
+////
+////                        }
+////                    });
+////                } else {
+////                    Toast.makeText(getContext(), "没有权限", Toast.LENGTH_LONG).show();
+////                }
+//        }
+//    }
 }

@@ -20,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.xiaohei.common.app.Activity;
 import com.xiaohei.common.widget.PortraitView;
+import com.xiaohei.talker.activities.AccountActivity;
 import com.xiaohei.talker.fragment.main.ActiveFragment;
 import com.xiaohei.talker.fragment.main.ContactFragment;
 import com.xiaohei.talker.fragment.main.GroupFragment;
@@ -98,6 +99,7 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     @OnClick(R.id.btn_action)
     public void onActionClick() {
+        AccountActivity.show(MainActivity.this);
     }
 
     /***
