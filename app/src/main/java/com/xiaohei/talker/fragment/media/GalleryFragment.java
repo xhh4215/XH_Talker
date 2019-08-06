@@ -22,9 +22,10 @@ import com.xiaohei.talker.R;
 public class GalleryFragment extends BottomSheetDialogFragment implements GalleryView.SelectedChangeListener {
 
     private GalleryView mGallery;
+    private onSelectedListener mListener;
 
     public GalleryFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -53,6 +54,23 @@ public class GalleryFragment extends BottomSheetDialogFragment implements Galler
             //就隐藏自己
             dismiss();
         }
+        if (mListener != null) {
+            //得到所有的选中的图片的路径
+            String[] paths = mGallery.getSelectedPath();
+            //返回第一张
+            mListener.onSelectedImage(paths[0]);
+            mListener=null;
+        }
+    }
+
+    /***
+     * 设置事件监听 并返回自己
+     * @param listener  onSelectedListener
+     * @return GalleryFragment
+     */
+    public GalleryFragment setListener(onSelectedListener listener) {
+        mListener = listener;
+        return this;
     }
 
     public interface onSelectedListener {

@@ -41,6 +41,15 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
     }
 
     /***
+     * fragment初次创建的时候调用的方法
+     * @param savedInstanceState
+     */
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    /***
      * 初始化fragment的布局的时候回调的方法
      * @param inflater   加载布局的布局加载器
      * @param container  初始化的布局的父布局
@@ -66,6 +75,11 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
         return mRoot;
     }
 
+    /***
+     * 当View视图创建的时候调用的方法
+     * @param view  创建的视图
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
