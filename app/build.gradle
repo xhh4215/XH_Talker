@@ -52,7 +52,8 @@ dependencies {
     //ucrop 图片剪切框架的依赖
     implementation "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     testImplementation 'junit:junit:4.12'
-    //使common模块依赖主app
+
+    //使common模块依赖主
     implementation project(':common')
 
 }
