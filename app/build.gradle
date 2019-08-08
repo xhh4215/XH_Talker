@@ -51,9 +51,10 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
     //ucrop 图片剪切框架的依赖
     implementation "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
-    testImplementation 'junit:junit:4.12'
+    implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
 
+    testImplementation 'junit:junit:4.12'
     //使common模块依赖主
-    implementation project(':common')
+    implementation project(':factory')
 
 }
