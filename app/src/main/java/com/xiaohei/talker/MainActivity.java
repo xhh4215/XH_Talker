@@ -18,6 +18,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import com.xiaohei.common.app.Activity;
 import com.xiaohei.common.widget.PortraitView;
 import com.xiaohei.talker.activities.AccountActivity;
