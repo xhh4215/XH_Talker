@@ -52,6 +52,9 @@ ext{
     ucropVersion = "2.2.0-native"
     easyPMVersion = "0.3.0"
     ossVersion = '2.3.0'
+    //异步事件处理框架
+    RxjavaVersion = '2.0.1'
+
 
 
 

@@ -52,10 +52,15 @@ dependencies {
     //ucrop 图片剪切框架的依赖
     implementation "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
+    //rxjava异步的事件处理框架
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.RxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.RxjavaVersion"
+
 
     testImplementation 'junit:junit:4.12'
     //使common模块依赖主
     implementation project(':factory')
-    compile project(path: ':common')
+    implementation project(path: ':common')
+
 
 }
