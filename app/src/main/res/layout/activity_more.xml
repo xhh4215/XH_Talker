@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xiaohei.talker.rxjava.MoreActivity">
+
+    <Button
+        android:id="@+id/buttonid"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="延迟创建" />
+
+    <Button
+        android:id="@+id/button2id"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="定时发送" />
+</LinearLayout>

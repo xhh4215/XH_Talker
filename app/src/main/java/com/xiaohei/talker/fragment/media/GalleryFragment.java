@@ -83,7 +83,7 @@ public class GalleryFragment extends BottomSheetDialogFragment implements Galler
     }
 
 
-    private static class TransStatusBottomSheetDialog extends BottomSheetDialog {
+    public static class TransStatusBottomSheetDialog extends BottomSheetDialog {
 
         public TransStatusBottomSheetDialog(@NonNull Context context) {
             super(context);

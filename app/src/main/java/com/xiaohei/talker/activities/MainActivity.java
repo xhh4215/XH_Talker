@@ -1,5 +1,7 @@
-package com.xiaohei.talker;
+package com.xiaohei.talker.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +23,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.xiaohei.common.app.Activity;
 import com.xiaohei.common.widget.PortraitView;
-import com.xiaohei.talker.activities.AccountActivity;
+import com.xiaohei.talker.R;
+import com.xiaohei.talker.fragment.assist.PermissionsFragment;
 import com.xiaohei.talker.fragment.main.ActiveFragment;
 import com.xiaohei.talker.fragment.main.ContactFragment;
 import com.xiaohei.talker.fragment.main.GroupFragment;
@@ -53,6 +56,13 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     private NavHelper<Integer> mNavHelper;
 
+    /***
+     * MainActivity 显示的入口
+     * @param context
+     */
+      public static void show(Context context){
+          context.startActivity(new Intent(context,MainActivity.class));
+      }
 
     @Override
     protected int getContentLayoutId() {
