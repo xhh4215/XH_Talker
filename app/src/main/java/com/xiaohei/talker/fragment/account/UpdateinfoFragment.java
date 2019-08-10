@@ -7,7 +7,12 @@ import android.net.Uri;
 import android.util.Log;
 
 
+
+
 import com.bumptech.glide.Glide;
+import com.example.factory.Factory;
+import com.example.factory.net.UploadHelper;
+
 import com.xiaohei.common.app.Application;
 import com.xiaohei.common.app.Fragment;
 import com.xiaohei.common.widget.PortraitView;
@@ -82,7 +87,7 @@ public class UpdateinfoFragment extends Fragment {
      * @param uri  图像的资源地址
      */
     private void loadPortrait(Uri uri) {
-        Glide.with(getContext())
+        Glide.with(Factory.app().getApplicationContext())
                 .load(uri)
                 .asBitmap()
                 .centerCrop()
@@ -91,6 +96,13 @@ public class UpdateinfoFragment extends Fragment {
         // 拿到本地文件的地址
         final String localPath = uri.getPath();
         Log.e("TAG", "localPath:" + localPath);
+        Factory.runOnAsync(new Runnable() {
+            @Override
+            public void run() {
+              String url =   UploadHelper.uploadPortrait(localPath);
+                Log.e("TAG", "url:" + url);
+            }
+        });
 
 
     }

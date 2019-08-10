@@ -60,7 +60,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     //使common模块依赖主
-    implementation project(':factory')
+    implementation project(path: ':factory')
     implementation project(path: ':common')
 
 
