@@ -10,9 +10,8 @@ public interface LoginConstact {
      }
 
     interface Presenter extends BaseConstarct.Presenter {
-        void Login(String phone, String name, String password);
+        void Login(String phone, String password);
 
-        boolean check(String phone);
 
     }
 }

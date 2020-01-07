@@ -9,6 +9,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //个推相关参数
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "rWtXqGLUjj9zAfJAFhvl81",
+                GETUI_APP_KEY   : "SCzhEGzgjM6VoRvSHR7Vc1",
+                GETUI_APP_SECRET: "EOtZn7p9tGAyEYDjzxzS6",
+                PACKAGE_NAME    : applicationId
+
+        ]
         //添加如下配置就OK了
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
@@ -55,6 +63,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.RxjavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.RxandroidVersion"
 
+    implementation "com.getui:sdk:$rootProject.ext.getuiVersion"
 
     testImplementation 'junit:junit:4.13'
     //使common模块依赖主

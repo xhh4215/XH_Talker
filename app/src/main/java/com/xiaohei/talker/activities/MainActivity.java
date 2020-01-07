@@ -2,7 +2,6 @@ package com.xiaohei.talker.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,6 @@ import net.qiujuer.genius.ui.Ui;
 import java.util.Objects;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends Activity implements BottomNavigationView.OnNavigationItemSelectedListener, NavHelper.OnTabChangedListener<Integer> {
@@ -150,12 +148,5 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
             }
         }
         mAction.animate().rotation(rotation).translationY(transY).setInterpolator(new AnticipateOvershootInterpolator(1)).setDuration(480).start();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }
