@@ -1,4 +1,4 @@
-package com.example.factory.model.api;
+package com.example.factory.model.api.account;
 
 public class RegisterModel {
     private String account;
