@@ -2,8 +2,8 @@
 
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
+        maven { url "https://www.jitpack.io" }
         google()
 
     }
@@ -26,6 +26,7 @@ allprojects {
         mavenCentral()
         maven { url "https://www.jitpack.io" }
         google()
+        maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
 
 
     }
@@ -38,25 +39,26 @@ ext{
     versionCode = 1
     versionName = '1.0.0'
     // 相关依赖库版本
-    androidxVersion = '1.0.0'
+    androidxVersion = '1.1.0'
     easyPMVersion = "0.3.0"
     ossVersion = '2.3.0'
 //    视图绑定控件的版本号
-    butterknifeVersion = '10.1.0'
+    butterknifeVersion = '10.2.1'
     //慕课老师UI的版本好
     geniusVersion = '2.0.0'
     glideVersion = '3.7.0'
     //圆形图片加载框架的版本号
     circleimageviewVersion = '2.1.0'
     //图片剪切库的版本号
-    ucropVersion = "2.2.0-native"
+    ucropVersion = '2.2.0'
     easyPMVersion = "0.3.0"
     ossVersion = '2.3.0'
     //异步事件处理框架
-    RxjavaVersion = '2.0.7'
-    RxandroidVersion = '2.0.1'
-
-
-
-
+    RxjavaVersion = '2.2.16'
+    RxandroidVersion = '2.1.1'
+    gsonVersion = '2.8.6'
+    retrofitVersion = '2.1.0'
+    getuiVersion = '2.9.3.0'
+    dbflowVersion = "4.0.0-beta7"
 }
+

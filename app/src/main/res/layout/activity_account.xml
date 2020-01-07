@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.xiaohei.talker.activities.AccountActivity">
      <ImageView
+         android:id="@+id/im_bg"
+         android:contentDescription="@string/app_name"
          android:layout_width="match_parent"
+         android:foreground="@color/maskChatHeader"
+         android:scaleType="centerCrop"
          android:layout_height="match_parent" />
     <FrameLayout
          android:id="@+id/lay_container"

@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.UserActivity"></activity>
         <activity
             android:name=".LaunchActivity"
             android:theme="@style/AppTheme">
@@ -26,9 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".rxjava.MoreActivity"></activity>
+        <activity android:name=".rxjava.MoreActivity" />
         <activity android:name=".rxjava.OperatorRxjavaActivity" />
-        <activity android:name=".rxjava.BasicRxjavaActivity"></activity>
+        <activity android:name=".rxjava.BasicRxjavaActivity" />
         <activity
             android:name=".activities.AccountActivity"
             android:theme="@style/AppTheme.Account" />
@@ -37,8 +38,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme.Main">
-        </activity>
+            android:theme="@style/AppTheme.Main"></activity>
     </application>
 
 </manifest>

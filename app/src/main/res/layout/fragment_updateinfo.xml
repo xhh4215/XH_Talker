@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xiaohei.talker.fragment.account.UpdateinfoFragment">
+    tools:context="com.xiaohei.talker.fragment.user.UpdateinfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <com.xiaohei.common.widget.PortraitView

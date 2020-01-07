@@ -1,4 +1,4 @@
-package com.xiaohei.talker.fragment.account;
+package com.xiaohei.talker.fragment.user;
 
 
 import android.content.Intent;
