@@ -3,6 +3,7 @@ package com.example.factory;
 import androidx.annotation.StringRes;
 
 import com.example.factory.model.api.account.RspModel;
+import com.example.factory.prisistence.Account;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xiaohei.common.app.Application;
@@ -30,6 +31,10 @@ public class Factory {
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS").create();
     }
 
+
+    public  static void setup(){
+        Account.load(app());
+    }
     /**
      * 返回全局的Application
      *

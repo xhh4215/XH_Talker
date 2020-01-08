@@ -53,6 +53,9 @@ public class AccountHelper {
      * @param callBack
      */
     public static void bindPush( final DataSource.CallBack<User> callBack){
-      callBack.onDataNotAvailable(R.string.app_name);
+//        Account.setBind(true);
+        callBack.onDataNotAvailable(R.string.data_network_error);
+
+
     }
 }

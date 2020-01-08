@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.factory.prisistence.Account;
 import com.xiaohei.common.app.Activity;
+import com.xiaohei.talker.activities.AccountActivity;
 import com.xiaohei.talker.activities.MainActivity;
 import com.xiaohei.talker.fragment.assist.PermissionsFragment;
 
@@ -21,6 +22,11 @@ import net.qiujuer.genius.ui.compat.UiCompat;
 
 public class LaunchActivity extends Activity {
     private ColorDrawable mBgDrawable;
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.activity_launch;
+    }
+
 
     @Override
     protected void initWidget() {
@@ -46,10 +52,18 @@ public class LaunchActivity extends Activity {
     }
 
     private void awaitPushReceiverId(){
-      if (!TextUtils.isEmpty(Account.getPushId())){
-          skip();
-          return;
-      }
+        if (Account.isLogin()){
+             if (Account.isBind()){
+                 skip();
+                 return;
+             }
+        } else{
+            if (!TextUtils.isEmpty(Account.getPushId())){
+                skip();
+                return;
+            }
+        }
+
       getWindow().getDecorView().postDelayed(new Runnable() {
           @Override
           public void run() {
@@ -68,23 +82,19 @@ public class LaunchActivity extends Activity {
 
    public void readllySkip(){
        if (PermissionsFragment.haveAll(this,getSupportFragmentManager())){
-           MainActivity.show(this);
+           if (Account.isLogin()){
+               MainActivity.show(this);
+
+           }else {
+               AccountActivity.show(this);
+           }
            finish();
+
        }
    }
-    @Override
-    protected int getContentLayoutId() {
-        return R.layout.activity_launch;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void startAnim(float endProgress,final Runnable endCallback){
           int finalColor = Resource.Color.WHITE;
-        ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+          ArgbEvaluator argbEvaluator = new ArgbEvaluator();
           int endColor = (int)argbEvaluator.evaluate(endProgress,mBgDrawable.getColor(),finalColor);
           ValueAnimator valueAnimator = ObjectAnimator.ofObject(this,property,argbEvaluator,endColor);
           valueAnimator.setDuration(1500);
