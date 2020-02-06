@@ -1,17 +1,42 @@
 package com.example.factory.model.db;
-import java.util.Date;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
-public class User {
+import java.util.Date;
+@Table(database = AppDataBase.class)
+public class User  extends BaseModel {
+    public static final int SEX_MAN = 1;
+    public static final int SEX_WOMAN = 2;
+    @PrimaryKey
      private String id;
+    @Column
      private String name;
-     private String phone;
-     private String portrait;
-     private String desc;
-     private int sex = 0;
-     private Date modifyAt;
-     private int follows;
-     private boolean isFollow;
-     private String alias;
+    @Column
+
+    private String phone;
+    @Column
+
+    private String portrait;
+    @Column
+
+    private String desc;
+    @Column
+
+    private int sex = 0;
+    @Column
+
+    private Date modifyAt;
+    @Column
+
+    private int follows;
+    @Column
+
+    private boolean isFollow;
+    @Column
+
+    private String alias;
 
     public String getId() {
         return id;

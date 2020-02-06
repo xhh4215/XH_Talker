@@ -43,12 +43,7 @@ public class LaunchActivity extends Activity {
     @Override
     protected void initData() {
         super.initData();
-        startAnim(0.5f, new Runnable() {
-            @Override
-            public void run() {
-                awaitPushReceiverId();
-            }
-        });
+        startAnim(0.5f, () -> awaitPushReceiverId());
     }
 
     private void awaitPushReceiverId(){

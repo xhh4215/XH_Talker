@@ -27,21 +27,20 @@ public class LoginFragment extends FragmentPresenter<LoginConstact.Presenter> im
     @BindView(R.id.btn_submit)
     Button mSubmit;
 
-
-    @Override
-    protected LoginConstact.Presenter initPreenter() {
-        return  new LoginPresenter(this);
+    public LoginFragment() {
+        // Required empty public constructor
     }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mAccountTrigger = (AccountTrigger) context;
     }
 
-    public LoginFragment() {
-        // Required empty public constructor
+    @Override
+    protected LoginConstact.Presenter initPreenter() {
+        return  new LoginPresenter(this);
     }
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.fragment_login;
@@ -54,7 +53,7 @@ public class LoginFragment extends FragmentPresenter<LoginConstact.Presenter> im
 
 
     }
-    @OnClick(R.id.txt_go_login)
+    @OnClick(R.id.txt_go_register)
     void onShowRegisterCklick(){
         mAccountTrigger.triggerView();
 
@@ -76,13 +75,9 @@ public class LoginFragment extends FragmentPresenter<LoginConstact.Presenter> im
     @Override
     public void showLoading() {
         super.showLoading();
-        mLoading.start();
-        mPhone.setEnabled(false);
+         mLoading.start();
+         mPhone.setEnabled(false);
          mPassword.setEnabled(false);
-        mSubmit.setEnabled(false);
-    }
-    @Override
-    public void setPresenter(LoginConstact.Presenter presenter) {
-
+         mSubmit.setEnabled(false);
     }
 }

@@ -6,6 +6,7 @@ import com.example.factory.R;
 import com.example.factory.data.helper.AccountHelper;
 import com.example.factory.model.api.account.RegisterModel;
 import com.example.factory.model.db.User;
+import com.example.factory.prisistence.Account;
 import com.xiaohei.common.Common;
 import com.xiaohei.factory.data.DataSource;
 import com.xiaohei.factory.presenter.BasePresenter;
@@ -24,7 +25,7 @@ public class RegisterPresenter  extends BasePresenter<RegisterConstact.View> imp
     @Override
     public void register(String phone, String name, String password) {
         start();
-        RegisterConstact.View view = getmView();
+        RegisterConstact.View view = getView();
 
         if (!check(phone)) {
             view.showError(R.string.data_account_register_invalid_parameter_mobile);
@@ -36,7 +37,7 @@ public class RegisterPresenter  extends BasePresenter<RegisterConstact.View> imp
             view.showError(R.string.data_account_register_invalid_parameter_password);
 
         } else {
-            RegisterModel model = new RegisterModel(phone, password, name);
+            RegisterModel model = new RegisterModel(phone, password, name, Account.getPushId());
             AccountHelper.register(model, this);
         }
 
@@ -49,7 +50,7 @@ public class RegisterPresenter  extends BasePresenter<RegisterConstact.View> imp
 
     @Override
     public void onDataNotAvailable( final int str) {
-        final RegisterConstact.View view = getmView();
+        final RegisterConstact.View view = getView();
         if (view == null)
             return;
         // 此时是从网络回送回来的，并不保证处于主现场状态
@@ -65,7 +66,7 @@ public class RegisterPresenter  extends BasePresenter<RegisterConstact.View> imp
 
     @Override
     public void onDataLoaded(User user) {
-        final RegisterConstact.View view = getmView();
+        final RegisterConstact.View view = getView();
         if (view == null)
             return;
         // 此时是从网络回送回来的，并不保证处于主现场状态

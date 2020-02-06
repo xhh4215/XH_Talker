@@ -2,6 +2,7 @@ package com.example.factory.net;
 
 import android.text.format.DateFormat;
 import android.util.Log;
+
 import com.alibaba.sdk.android.oss.OSS;
 import com.alibaba.sdk.android.oss.OSSClient;
 import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
@@ -21,15 +22,14 @@ import java.util.Date;
 public class UploadHelper {
     private static final String TAG = UploadHelper.class.getSimpleName();
     // 与你们的存储区域有关系
-    private static final String ENDPOINT = "http://oss-cn-beijing.aliyuncs.com";
+    private static final String ENDPOINT = "oss-cn-beijing.aliyuncs.com";
     // 上传的仓库名
     private static final String BUCKET_NAME = "ltalker-xhh";
 
 
     private static OSS getClient() {
         // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的`访问控制`章节
-        OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(
-                "LTAIvJpJcwwukbFn", "2i7psnU4fLnFNnvnQN1JechrtvyYcs");
+        OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider("LTAI4FgCftnBg28ZfN4LPf66", "BhJuQ7tBfQJyYjlZ7mRBeRvx8gNG79");
         return new OSSClient(Factory.app(), ENDPOINT, credentialProvider);
     }
 
@@ -43,8 +43,7 @@ public class UploadHelper {
      */
     private static String upload(String objKey, String path) {
         // 构造一个上传请求
-        PutObjectRequest request = new PutObjectRequest(BUCKET_NAME,
-                objKey, path);
+        PutObjectRequest request = new PutObjectRequest(BUCKET_NAME, objKey, path);
 
         try {
             // 初始化上传的Client

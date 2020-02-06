@@ -84,9 +84,6 @@ public class Application extends android.app.Application {
      * @param msg 字符串
      */
     public static void showToast(final String msg) {
-        // Toast 只能在主线程中显示，所有需要进行线程转换，
-        Toast.makeText(instance, msg, Toast.LENGTH_SHORT).show();
-
         // 保证一定是在主线程进行的show操作
         Run.onUiAsync(new Action() {
             @Override

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.factory.Factory;
 import com.example.factory.data.helper.AccountHelper;
 import com.example.factory.prisistence.Account;
 import com.igexin.sdk.PushConsts;
@@ -24,7 +23,6 @@ public class GeTuiReceiver extends BroadcastReceiver {
         // 判断当前消息的意图
         switch (bundle.getInt(PushConsts.CMD_ACTION)) {
             case PushConsts.GET_CLIENTID: {
-                Log.i(TAG, "GET_CLIENTID:" + bundle.toString());
                 // 当Id初始化的时候
                 // 获取设备Id
                 onClientInit(bundle.getString("clientid"));
@@ -69,6 +67,6 @@ public class GeTuiReceiver extends BroadcastReceiver {
      */
     private void onMessageArrived(String message) {
         // 交给Factory处理
-        Factory.dispatchPush(message);
+//        Factory.dispatchPush(message);
     }
 }

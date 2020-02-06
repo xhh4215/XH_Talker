@@ -5,15 +5,13 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.xiaohei.common.app.Application;
@@ -95,6 +93,11 @@ public class PermissionsFragment extends BottomSheetDialogFragment implements Ea
 
         root.findViewById(R.id.im_state_permission_audio)
                 .setVisibility(haveRecordAudioPerm(context) ? View.VISIBLE : View.GONE);
+
+        root.findViewById(R.id.im_state_permission_phone_state)
+                .setVisibility(havePhoneStatePerm(context) ? View.VISIBLE : View.GONE);
+        root.findViewById(R.id.im_state_permission_auto_permission)
+                .setVisibility(haveAutoPerm(context) ? View.VISIBLE : View.GONE);
     }
 
     /**
@@ -142,6 +145,19 @@ public class PermissionsFragment extends BottomSheetDialogFragment implements Ea
         };
 
         return EasyPermissions.hasPermissions(context, perms);
+    } /**
+     * 获取是否有外部存储写入权限
+     *
+     * @param context 上下文
+     * @return True则有
+     */
+    private static boolean haveAutoPerm(Context context) {
+        // 准备需要检查的写入权限
+        String[] perms = new String[]{
+                Manifest.permission.RECEIVE_BOOT_COMPLETED
+        };
+
+        return EasyPermissions.hasPermissions(context, perms);
     }
 
     /**
@@ -154,6 +170,20 @@ public class PermissionsFragment extends BottomSheetDialogFragment implements Ea
         // 准备需要检查的录音权限
         String[] perms = new String[]{
                 Manifest.permission.RECORD_AUDIO
+        };
+
+        return EasyPermissions.hasPermissions(context, perms);
+    }
+/**
+     * 获取是否录音权限
+     *
+     * @param context 上下文
+     * @return True则有
+     */
+    private static boolean havePhoneStatePerm(Context context) {
+        // 准备需要检查的录音权限
+        String[] perms = new String[]{
+                Manifest.permission.READ_PHONE_STATE
         };
 
         return EasyPermissions.hasPermissions(context, perms);
@@ -180,7 +210,9 @@ public class PermissionsFragment extends BottomSheetDialogFragment implements Ea
         boolean haveAll = haveNetworkPerm(context)
                 && haveReadPerm(context)
                 && haveWritePerm(context)
-                && haveRecordAudioPerm(context);
+                && haveRecordAudioPerm(context)
+                &&haveAutoPerm(context)
+                &&havePhoneStatePerm(context);
 
         // 如果没有则显示当前申请权限的界面
         if (!haveAll) {
@@ -200,6 +232,8 @@ public class PermissionsFragment extends BottomSheetDialogFragment implements Ea
                 Manifest.permission.INTERNET,
                 Manifest.permission.ACCESS_NETWORK_STATE,
                 Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.RECEIVE_BOOT_COMPLETED,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.RECORD_AUDIO

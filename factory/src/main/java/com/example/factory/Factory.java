@@ -4,8 +4,12 @@ import androidx.annotation.StringRes;
 
 import com.example.factory.model.api.account.RspModel;
 import com.example.factory.prisistence.Account;
+import com.example.factory.utils.DBFlowExclusionStrategies;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.igexin.sdk.message.GTTransmitMessage;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 import com.xiaohei.common.app.Application;
 import com.xiaohei.factory.data.DataSource;
 
@@ -27,12 +31,16 @@ public class Factory {
         executor = Executors.newFixedThreadPool(4);
         //设置时间格式
         gson = new GsonBuilder()
-//                .setExclusionStrategies()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS").create();
+                .setExclusionStrategies(new DBFlowExclusionStrategies())
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS")
+                .create();
     }
 
 
     public  static void setup(){
+        FlowManager.init(new FlowConfig.Builder(app())
+        .openDatabasesOnInit(true)
+        .build());
         Account.load(app());
     }
     /**
@@ -137,7 +145,7 @@ public class Factory {
      *
      * @param message 消息
      */
-    public static void dispatchPush(String message) {
+    public static void dispatchPush(GTTransmitMessage message) {
         // TODO
     }
 

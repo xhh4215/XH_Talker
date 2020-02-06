@@ -22,7 +22,6 @@ android {
                 GETUI_APP_ID    : "d52jTJlSHX8DeW0N76Duk9",
                 GETUI_APP_KEY   : "bood3K5H0W9hSqhMWF7Hu9",
                 GETUI_APP_SECRET: "XI3QjBotOB9BgdLm9Xx7HA",
-                PACKAGE_NAME  : applicationId
 
         ]
         //添加如下配置就OK了
@@ -71,9 +70,7 @@ dependencies {
     //rxjava异步的事件处理框架
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.RxjavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.RxandroidVersion"
-
-    implementation "com.getui:sdk:$rootProject.ext.getuiVersion"
-
+    implementation "com.getui:sdk:$rootProject.getuiVersion"
     testImplementation 'junit:junit:4.13'
     //使common模块依赖主
     implementation project(path: ':factory')

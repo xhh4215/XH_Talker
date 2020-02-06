@@ -3,14 +3,14 @@ package com.xiaohei.factory.presenter;
 public class BasePresenter<T extends BaseConstarct.View> implements BaseConstarct.Presenter {
     private   T mView;
     public  BasePresenter(T view){
-        setmView(view);
+        setView(view);
 
     }
 
-    public  final T getmView(){
+    public  final T getView(){
         return mView;
     }
-    protected void  setmView(T view){
+    protected void  setView(T view){
         this.mView = view;
         this.mView.setPresenter(this);
 

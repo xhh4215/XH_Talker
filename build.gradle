@@ -25,8 +25,8 @@ allprojects {
         //添加应用的资源原地址为maven
         mavenCentral()
         maven { url "https://www.jitpack.io" }
-        google()
         maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
+        google()
 
 
     }
@@ -41,7 +41,6 @@ ext{
     // 相关依赖库版本
     androidxVersion = '1.1.0'
     easyPMVersion = "0.3.0"
-    ossVersion = '2.3.0'
 //    视图绑定控件的版本号
     butterknifeVersion = '10.2.1'
     //慕课老师UI的版本好
@@ -58,7 +57,8 @@ ext{
     RxandroidVersion = '2.1.1'
     gsonVersion = '2.8.6'
     retrofitVersion = '2.1.0'
-    getuiVersion = '2.9.3.0'
+    getuiVersion = '2.13.3.0'
     dbflowVersion = "4.0.0-beta7"
+
 }
 

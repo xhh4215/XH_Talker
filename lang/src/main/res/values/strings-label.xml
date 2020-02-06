@@ -4,7 +4,11 @@
     <string name="label_permission_network">网络访问</string>
     <string name="label_permission_network_desc">用于即时通讯传输</string>
     <string name="label_permission_read">读取文件</string>
+    <string name="label_permission_auto_permission">开机自启动权限</string>
+    <string name="label_permission_auto_permission_desc">用于开机自启动权限</string>
+    <string name="label_permission_phone_state">手机参数</string>
     <string name="label_permission_read_desc">用于设置头像与发送图片</string>
+    <string name="label_permission_phone_state_desc">用于获取手机的参数</string>
     <string name="label_permission_write">写入外部文件</string>
     <string name="label_permission_write_desc">用于OSS日志存储</string>
     <string name="label_permission_record_audio">麦克风</string>
