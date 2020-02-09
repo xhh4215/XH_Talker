@@ -70,6 +70,7 @@ dependencies {
     //rxjava异步的事件处理框架
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.RxjavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.RxandroidVersion"
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
     implementation "com.getui:sdk:$rootProject.getuiVersion"
     testImplementation 'junit:junit:4.13'
     //使common模块依赖主

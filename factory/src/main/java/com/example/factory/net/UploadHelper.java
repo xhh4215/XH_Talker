@@ -1,7 +1,6 @@
 package com.example.factory.net;
 
 import android.text.format.DateFormat;
-import android.util.Log;
 
 import com.alibaba.sdk.android.oss.OSS;
 import com.alibaba.sdk.android.oss.OSSClient;
@@ -29,8 +28,10 @@ public class UploadHelper {
 
     private static OSS getClient() {
         // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的`访问控制`章节
-        OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider("LTAI4FgCftnBg28ZfN4LPf66", "BhJuQ7tBfQJyYjlZ7mRBeRvx8gNG79");
+        OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(
+                "LTAI4Fi62ATVD5H5mPQjRePS", "TATmjrIXvTSiH6RNVOwgkvUrw1iSFo");
         return new OSSClient(Factory.app(), ENDPOINT, credentialProvider);
+
     }
 
 
@@ -43,7 +44,8 @@ public class UploadHelper {
      */
     private static String upload(String objKey, String path) {
         // 构造一个上传请求
-        PutObjectRequest request = new PutObjectRequest(BUCKET_NAME, objKey, path);
+        PutObjectRequest request = new PutObjectRequest(BUCKET_NAME,
+                objKey, path);
 
         try {
             // 初始化上传的Client
@@ -52,8 +54,6 @@ public class UploadHelper {
             PutObjectResult result = client.putObject(request);
             // 得到一个外网可访问的地址
             String url = client.presignPublicObjectURL(BUCKET_NAME, objKey);
-            // 格式打印输出
-            Log.d(TAG, String.format("PublicObjectURL:%s", url));
             return url;
         } catch (Exception e) {
             e.printStackTrace();

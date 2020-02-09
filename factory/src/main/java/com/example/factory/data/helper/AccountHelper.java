@@ -33,7 +33,6 @@ public class AccountHelper {
         Call<RspModel<AccountRspModel>> call =  service.accountLogin(model);
         call.enqueue(new AccountRspCallBack(callBack));
     }
-
     /***
      * 对设备id绑定
      * @param callBack
@@ -63,13 +62,6 @@ public class AccountHelper {
                 AccountRspModel accountmodel = rspModel.getResult();
                 final User user = accountmodel.getUser();
                 user.save();
-//                       DatabaseDefinition definition = FlowManager.getDatabase(AppDataBase.class);
-//                       definition.beginTransactionAsync(new ITransaction() {
-//                           @Override
-//                           public void execute(DatabaseWrapper databaseWrapper) {
-//                               FlowManager.getModelAdapter(User.class).save(user);
-//                           }
-//                       }).build().execute();
                 // 数据库写入和缓存
                 Account.Login(accountmodel);
                 if (accountmodel.isBind()){

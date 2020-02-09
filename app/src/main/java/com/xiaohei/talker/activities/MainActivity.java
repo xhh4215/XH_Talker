@@ -10,7 +10,6 @@ import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -113,12 +112,17 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
 
     @OnClick(R.id.im_search)
     public void onSearchMenuClick() {
-        Toast.makeText(this, "点击了查询按钮", Toast.LENGTH_LONG).show();
+     int type = Objects.equals(mNavHelper.getCurrentTab().extra,R.string.title_group)? SearchActivity.TYPE_GROUP:SearchActivity.TYPE_USER;
+       SearchActivity.show(this,type);
     }
 
     @OnClick(R.id.btn_action)
     public void onActionClick() {
-        AccountActivity.show(MainActivity.this);
+          if (Objects.equals(mNavHelper.getCurrentTab().extra,R.string.title_group)){
+              //todo
+          }else{
+              SearchActivity.show(this,SearchActivity.TYPE_USER);
+          }
     }
 
     /***

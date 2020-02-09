@@ -145,8 +145,23 @@ public class PermissionsFragment extends BottomSheetDialogFragment implements Ea
         };
 
         return EasyPermissions.hasPermissions(context, perms);
-    } /**
-     * 获取是否有外部存储写入权限
+    }
+    /**
+     * 获取是否权限
+     *
+     * @param context 上下文
+     * @return True则有
+     */
+    private static boolean haveRecordAudioPerm(Context context) {
+        // 准备需要检查的录音权限
+        String[] perms = new String[]{
+                Manifest.permission.RECORD_AUDIO
+        };
+
+        return EasyPermissions.hasPermissions(context, perms);
+    }
+    /**
+     *
      *
      * @param context 上下文
      * @return True则有
@@ -160,21 +175,8 @@ public class PermissionsFragment extends BottomSheetDialogFragment implements Ea
         return EasyPermissions.hasPermissions(context, perms);
     }
 
-    /**
-     * 获取是否录音权限
-     *
-     * @param context 上下文
-     * @return True则有
-     */
-    private static boolean haveRecordAudioPerm(Context context) {
-        // 准备需要检查的录音权限
-        String[] perms = new String[]{
-                Manifest.permission.RECORD_AUDIO
-        };
 
-        return EasyPermissions.hasPermissions(context, perms);
-    }
-/**
+   /**
      * 获取是否录音权限
      *
      * @param context 上下文

@@ -110,6 +110,9 @@ public class UpdateInfoFragment extends FragmentPresenter<UpdateInfoContract.Pre
                 .centerCrop()
                 .into(mPortrait);
     }
+
+
+
     @OnClick(R.id.im_sex)
     void onSexClick() {
         // 性别图片点击的时候触发

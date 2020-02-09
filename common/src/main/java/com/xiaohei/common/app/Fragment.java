@@ -2,13 +2,14 @@ package com.xiaohei.common.app;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import com.xiaohei.common.widget.convention.PlaceHolderView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -26,6 +27,7 @@ import butterknife.Unbinder;
 public abstract class Fragment extends androidx.fragment.app.Fragment {
     protected View mRoot;
     protected Unbinder mRootUnBinder;
+    protected PlaceHolderView mPlaceHolderView;
 
     /***
      * 当一个fragment添加到activity的时候回调的方法
@@ -126,6 +128,12 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
         return false;
     }
 
-
+    /****
+     * 设置占位布局
+     * @param placeHolderView
+     */
+    public void setPlaceHolderView(PlaceHolderView placeHolderView){
+     this.mPlaceHolderView = placeHolderView;
+    }
 
 }
