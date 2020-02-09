@@ -84,7 +84,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
         //或得绑定的数据
         Data data = mDataList.get(position);
         //触发holder绑定的方法
-        holder.onBind(data);
+        holder.bind(data);
     }
 
     /***

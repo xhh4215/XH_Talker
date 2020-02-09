@@ -24,7 +24,10 @@ public  abstract class ToolBarActivity extends Activity {
 
     protected void initTitleNeedBack(){
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDefaultDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
+
     }
 }

@@ -58,7 +58,7 @@ dependencies {
     //circleimageview 圆形图片框架依赖的添加
     implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
     //glide 图片加载框架的依赖的添加
-    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    api "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
     implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     //recycleview 列表显示的框架的添加
     implementation "androidx.recyclerview:recyclerview:$rootProject.ext.androidxVersion"

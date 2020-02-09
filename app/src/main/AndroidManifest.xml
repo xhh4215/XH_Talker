@@ -50,7 +50,7 @@
 
         <activity
             android:name=".activities.SearchActivity"
-            android:label="@string/label_search"
+            android:label="@string/title_search"
             android:theme="@style/AppTheme.TransStatusBar"/>
 
 
