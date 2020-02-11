@@ -49,9 +49,35 @@ public interface RemoteService {
     @PUT("user")
     Call<RspModel<UserCard>> userUpdate(@Body UserUpdateModel model);
 
+    /***
+     * 查询用户
+     * @param name
+     * @return
+     */
     @GET("user/search/{name}")
     Call<RspModel<List<UserCard>>> userSearch(@Path("name") String name);
 
+    /***
+     * 关注用户
+     * @param userId
+     * @return
+     */
     @PUT("user/follow/{userId}")
     Call<RspModel<UserCard>> userFollow(@Path("userId") String userId);
+    /***
+     * 查询用户
+     * @param
+     * @return
+     */
+    @GET("user/contact")
+    Call<RspModel<List<UserCard>>> userContacts();
+
+    /***
+     * 查询用户
+     * @param
+     * @return
+     */
+    @GET("{id}")
+    Call<RspModel<UserCard>> userFind(@Path("id") String id);
+
 }

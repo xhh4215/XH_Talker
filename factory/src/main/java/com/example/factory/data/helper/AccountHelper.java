@@ -61,7 +61,8 @@ public class AccountHelper {
             if (rspModel.success()) {
                 AccountRspModel accountmodel = rspModel.getResult();
                 final User user = accountmodel.getUser();
-                user.save();
+                DbHelper.save(User.class,user);
+                //user.save();
                 // 数据库写入和缓存
                 Account.Login(accountmodel);
                 if (accountmodel.isBind()){

@@ -144,10 +144,10 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
      */
     public interface AdapterListener<Data> {
         //当Cell点击的时候触发
-        void onItemCLick(RecyclerAdapter.ViewHolder holder, Data data);
+         void  onItemCLick(RecyclerAdapter.ViewHolder holder, Data data);
 
         //当Cell长按的时候触发
-        void onItemLongCLick(RecyclerAdapter.ViewHolder holder, Data data);
+         void onItemLongCLick(RecyclerAdapter.ViewHolder holder, Data data);
     }
 
     /**
@@ -183,6 +183,10 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     @Override
     public int getItemCount() {
         return mDataList.size();
+    }
+
+    public List<Data> getItems(){
+      return   mDataList;
     }
 
     /***
@@ -240,8 +244,6 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
             return;
         mDataList.addAll(dataList);
         notifyDataSetChanged();
-
-
     }
 
     /***

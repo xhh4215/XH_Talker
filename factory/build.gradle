@@ -24,23 +24,24 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //使common模块依赖主
-    implementation project(':common')
-    implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
-    implementation "com.aliyun.dpa:oss-android-sdk:$rootProject.ext.ossVersion"
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
-    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
-    implementation "com.getui:sdk:$rootProject.getuiVersion"
+    api project(':common')
+    api "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
+    api "com.aliyun.dpa:oss-android-sdk:$rootProject.ext.ossVersion"
+    api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    api "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    api "com.getui:sdk:$rootProject.getuiVersion"
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${rootProject.ext.dbflowVersion}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${rootProject.ext.dbflowVersion}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow:${rootProject.ext.dbflowVersion}"
+    api "com.github.Raizlabs.DBFlow:dbflow-core:${rootProject.ext.dbflowVersion}"
+    api "com.github.Raizlabs.DBFlow:dbflow:${rootProject.ext.dbflowVersion}"
+    api 'androidx.recyclerview:recyclerview:1.1.0'
 
 
 }

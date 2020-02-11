@@ -28,6 +28,8 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
     protected View mRoot;
     protected Unbinder mRootUnBinder;
     protected PlaceHolderView mPlaceHolderView;
+    protected boolean mIsFristInitData = true;
+
 
     /***
      * 当一个fragment添加到activity的时候回调的方法
@@ -86,6 +88,10 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // 当View创建完成后初始化数据
+        if (mIsFristInitData){
+            mIsFristInitData = false;
+            onFristInit();
+        }
         initData();
     }
 
@@ -115,6 +121,12 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
      * 初始化数据
      */
     protected void initData() {
+
+    }
+/**
+     * 首次初始化数据
+     */
+    protected void onFristInit() {
 
     }
 

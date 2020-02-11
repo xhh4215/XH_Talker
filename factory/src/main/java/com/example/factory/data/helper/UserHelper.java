@@ -8,9 +8,12 @@ import com.example.factory.model.api.account.RspModel;
 import com.example.factory.model.api.user.UserUpdateModel;
 import com.example.factory.model.card.UserCard;
 import com.example.factory.model.db.User;
+import com.example.factory.model.db.User_Table;
 import com.example.factory.net.NetWork;
 import com.example.factory.net.RemoteService;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.xiaohei.factory.data.DataSource;
+import com.xiaohei.utils.CollectionUtil;
 
 import java.util.List;
 
@@ -33,8 +36,7 @@ public class UserHelper {
                 RspModel<UserCard> rspModel = response.body();
                 if (rspModel.success()){
                        UserCard userCard = rspModel.getResult();
-                       User user  = userCard.build();
-                       user.save();
+                       Factory.getUsercenter().dispatch(userCard);
                        callBack.onDataLoaded(userCard);
                 }else{
                     Factory.decodeRspCode(rspModel,callBack);
@@ -74,7 +76,6 @@ public class UserHelper {
         });
         return call;
     }
-
     //关注
     public static void follow(String followId, final DataSource.CallBack<UserCard> callBack) {
         RemoteService service = NetWork.remote();
@@ -85,8 +86,7 @@ public class UserHelper {
                 RspModel<UserCard> rspModel = response.body();
                 if (rspModel.success()){
                     UserCard userCard = rspModel.getResult();
-                    User user = userCard.build();
-                    user.save();
+                    Factory.getUsercenter().dispatch(userCard);
                     callBack.onDataLoaded(userCard);
                 }else{
                     Factory.decodeRspCode(rspModel,callBack);
@@ -101,5 +101,75 @@ public class UserHelper {
             }
         });
     }
+    // 刷新联系人的操作
+    public static void refreshContacts() {
+        RemoteService service = NetWork.remote();
+        service.userContacts()
+                .enqueue(new Callback<RspModel<List<UserCard>>>() {
+                    @Override
+                    public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
+                        RspModel<List<UserCard>> rspModel = response.body();
+                        if (rspModel.success()) {
+                            // 返回数据
+                        List<UserCard> cards = rspModel.getResult();
+                        if (cards==null||cards.size()==0)
+                            return;
+                        Factory.getUsercenter().dispatch(CollectionUtil.toArray(cards,UserCard.class));
+                        } else {
+                            Factory.decodeRspCode(rspModel, null);
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<RspModel<List<UserCard>>> call, Throwable t) {
+                     }
+                });
+    }
+    // 从本地查询一个用户的信息
+    public static User findFromLocal(String id) {
+        return SQLite.select()
+                .from(User.class)
+                .where(User_Table.id.eq(id))
+                .querySingle();
+    }
+
+    public static User findFromNet(String id) {
+        RemoteService service = NetWork.remote();
+        try {
+            Response<RspModel<UserCard>> response = service.userFind(id).execute();
+            UserCard card = response.body().getResult();
+            if (card != null) {
+                User user = card.build();
+                 Factory.getUsercenter().dispatch(card);
+                return user;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    /**
+     * 搜索一个用户，优先本地缓存，
+     * 没有用然后再从网络拉取
+     */
+    public static User search(String id) {
+        User user = findFromLocal(id);
+        if (user == null) {
+            return findFromNet(id);
+        }
+        return user;
+    }
+    /**
+     * 搜索一个用户，优先网络查询
+     * 没有用然后再从本地缓存拉取
+     */
+    public static User searchFirstOfNet(String id) {
+        User user = findFromNet(id);
+        if (user == null) {
+            return findFromLocal(id);
+        }
+        return user;
+    }
 }

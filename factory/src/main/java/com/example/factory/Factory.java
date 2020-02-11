@@ -2,6 +2,12 @@ package com.example.factory;
 
 import androidx.annotation.StringRes;
 
+import com.example.factory.data.group.GroupCenter;
+import com.example.factory.data.group.GroupDispatcher;
+import com.example.factory.data.message.MessageCenter;
+import com.example.factory.data.message.MessageDispatcher;
+import com.example.factory.data.user.UserCenter;
+import com.example.factory.data.user.UserDispatcher;
 import com.example.factory.model.api.account.RspModel;
 import com.example.factory.prisistence.Account;
 import com.example.factory.utils.DBFlowExclusionStrategies;
@@ -147,6 +153,29 @@ public class Factory {
      */
     public static void dispatchPush(GTTransmitMessage message) {
         // TODO
+    }
+
+    /***
+     * 获取一个用户中心的实现类
+     * @return
+     */
+    public static UserCenter getUsercenter(){
+        return UserDispatcher.instance();
+    }
+
+       /***
+     * 获取一个消息中心的实现类
+     * @return
+     */
+    public static MessageCenter getMessageCenter(){
+        return MessageDispatcher.instance();
+    }
+    /***
+     * 获取一个群中心的实现类
+     * @return
+     */
+    public static GroupCenter getGroupCenter(){
+        return GroupDispatcher.instance();
     }
 
 }

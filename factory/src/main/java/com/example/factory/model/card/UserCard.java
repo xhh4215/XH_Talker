@@ -1,7 +1,7 @@
 package com.example.factory.model.card;
 
-
 import com.example.factory.model.db.User;
+import com.xiaohei.factory.model.Author;
 
 import java.util.Date;
 
@@ -10,33 +10,25 @@ import java.util.Date;
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
-public class UserCard{
-     private String id;
-     private String name;
-     private String phone;
-     private String portrait;
-     private String desc;
-     private int sex = 0;
-     private Date modifyAt;
-     private int follows;
-     private boolean isFollow;
-     private int following;
+public class UserCard implements Author {
+    private String id;
+    private String name;
+    private String phone;
+    private String portrait;
+    private String desc;
+    private int sex = 0;
 
-    public int getFollowing() {
-        return following;
-    }
+    // 用户关注人的数量
+    private int follows;
 
-    public void setFollowing(int following) {
-        this.following = following;
-    }
+    // 用户粉丝的数量
+    private int following;
 
-    public Date getModifyAt() {
-        return modifyAt;
-    }
+    // 我与当前User的关系状态，是否已经关注了这个人
+    private boolean isFollow;
 
-    public void setModifyAt(Date modifyAt) {
-        this.modifyAt = modifyAt;
-    }
+    // 用户信息最后的更新时间
+    private Date modifyAt;
 
     public String getId() {
         return id;
@@ -86,13 +78,20 @@ public class UserCard{
         this.sex = sex;
     }
 
-
     public int getFollows() {
         return follows;
     }
 
     public void setFollows(int follows) {
         this.follows = follows;
+    }
+
+    public int getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(int following) {
+        this.following = following;
     }
 
     public boolean isFollow() {
@@ -102,24 +101,33 @@ public class UserCard{
     public void setFollow(boolean follow) {
         isFollow = follow;
     }
-    //
-    private transient User user;
-    public User build(){
-     if (user==null){
-      User user = new User();
-      user.setId(id);
-      user.setName(name);
-      user.setPortrait(portrait);
-      user.setPhone(phone);
-      user.setDesc(desc);
-      user.setSex(sex);
-      user.setFollow(isFollow);
-      user.setFollows(follows);
-      user.setFollowing(following);
-      user.setModifyAt(modifyAt);
-      this.user = user;
 
-     }
-     return user;
+    public Date getModifyAt() {
+        return modifyAt;
+    }
+
+    public void setModifyAt(Date modifyAt) {
+        this.modifyAt = modifyAt;
+    }
+
+    // 缓存一个对应的User, 不能被GSON框架解析使用ø
+    private transient User user;
+
+    public User build() {
+        if (user == null) {
+            User user = new User();
+            user.setId(id);
+            user.setName(name);
+            user.setPortrait(portrait);
+            user.setPhone(phone);
+            user.setDesc(desc);
+            user.setSex(sex);
+            user.setFollow(isFollow);
+            user.setFollows(follows);
+            user.setFollowing(following);
+            user.setModifyAt(modifyAt);
+            this.user = user;
+        }
+        return user;
     }
 }

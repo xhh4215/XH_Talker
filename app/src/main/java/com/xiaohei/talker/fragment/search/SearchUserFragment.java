@@ -20,6 +20,7 @@ import com.xiaohei.common.app.FragmentPresenter;
 import com.xiaohei.common.widget.PortraitView;
 import com.xiaohei.common.widget.recycler.RecyclerAdapter;
 import com.xiaohei.talker.R;
+import com.xiaohei.talker.activities.PersonalActivity;
 import com.xiaohei.talker.activities.SearchActivity;
 
 import net.qiujuer.genius.ui.Ui;
@@ -116,10 +117,7 @@ public class SearchUserFragment extends FragmentPresenter<SearchConstact.Present
 
         @Override
         protected void onBind(UserCard userCard) {
-            Glide.with(getContext())
-                    .load(userCard.getPortrait())
-                    .centerCrop()
-                    .into(mPortraitView);
+            mPortraitView.setUp( Glide.with(getContext()),userCard);
             mName.setText(userCard.getName());
             mFollow.setEnabled(!userCard.isFollow());
         }
@@ -132,6 +130,12 @@ public class SearchUserFragment extends FragmentPresenter<SearchConstact.Present
         }
         updateData(userCard);
         }
+        @OnClick(R.id.im_portrait)
+        void onPortraitClick() {
+            // 显示信息
+            PersonalActivity.show(getContext(), mData.getId());
+        }
+
         @OnClick(R.id.im_follow)
         void onFollowClick(){
             mPresenter.follow(mData.getId());

@@ -24,23 +24,23 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
-    implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
-    implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
-    implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
-    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
-    implementation "androidx.appcompat:appcompat:$rootProject.ext.androidxVersion"
-    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.androidxVersion"
-    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    api "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
+    api "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
+    api "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
+    api "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+    api "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    api "androidx.appcompat:appcompat:$rootProject.ext.androidxVersion"
+    api "androidx.recyclerview:recyclerview:$rootProject.ext.androidxVersion"
+    api "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
     testImplementation 'junit:junit:4.13'
-    implementation project(path: ':lang')
+    api project(path: ':lang')
 
 
 

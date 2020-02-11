@@ -106,8 +106,14 @@ public class MainActivity extends Activity implements BottomNavigationView.OnNav
         Menu menu = mNavigation.getMenu();
         // 触发首次选中
         menu.performIdentifierAction(R.id.action_home, 0);
+        // 初始化头像加载
+        mPortrait.setUp(Glide.with(this), Account.getUser());
 
 
+    }
+    @OnClick(R.id.im_portrait)
+    void onPortraitClick() {
+        PersonalActivity.show(this, Account.getUserId());
     }
 
     @OnClick(R.id.im_search)

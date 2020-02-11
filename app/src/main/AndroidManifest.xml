@@ -25,6 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.MessageActivity"
+            android:label="@string/title_activity_message"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".LaunchActivity"
             android:label="@string/title_activity_launch"
             android:theme="@style/AppTheme.TransStatusBar">
@@ -47,18 +51,22 @@
             android:name=".activities.UserActivity"
             android:label="@string/title_activity_user"
             android:theme="@style/AppTheme.Account" />
-
         <activity
             android:name=".activities.SearchActivity"
             android:label="@string/title_search"
-            android:theme="@style/AppTheme.TransStatusBar"/>
-
+            android:theme="@style/AppTheme.TransStatusBar" />
+        <activity
+            android:name=".activities.PersonalActivity"
+            android:label="@string/title_activity_personal"
+            android:theme="@style/AppTheme.TransStatusBar" />
 
         <service
             android:name=".services.MyPushService"
             android:exported="true"
             android:label="PushService"
-            android:process=":pushservice" /> <!-- 处理个推的消息回执的services -->
+            android:process=":pushservice" />
+
+        <!-- 处理个推的消息回执的services -->
         <service
             android:name=".services.MyIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE" />

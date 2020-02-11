@@ -43,39 +43,38 @@ android {
 //  /Users/smallblack/Desktop
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.google.android.material:material:1.0.0'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.google.android.material:material:1.0.0'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
     //MasterDesign视图框架的依赖的添加
     //慕课网老师的两个UI包的依赖的添加
-    implementation "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
-    implementation "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
+    api "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
+    api "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     //circleimageview 圆形图片框架依赖的添加
-    implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+    api "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
     //glide 图片加载框架的依赖的添加
     api "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
-    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    api "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     //recycleview 列表显示的框架的添加
-    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.androidxVersion"
+    api "androidx.recyclerview:recyclerview:$rootProject.ext.androidxVersion"
     //butterknife 框架的依赖的添加
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
     //ucrop 图片剪切框架的依赖
-    implementation "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
-    implementation "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
+    api "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
+    api "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
     //rxjava异步的事件处理框架
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.RxjavaVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.RxandroidVersion"
-    implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
-    implementation "com.getui:sdk:$rootProject.getuiVersion"
+    api "io.reactivex.rxjava2:rxjava:$rootProject.ext.RxjavaVersion"
+    api "io.reactivex.rxjava2:rxandroid:$rootProject.ext.RxandroidVersion"
+    api group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    api "com.getui:sdk:$rootProject.getuiVersion"
     testImplementation 'junit:junit:4.13'
     //使common模块依赖主
-    implementation project(path: ':factory')
-    implementation project(path: ':common')
+    api project(path: ':factory')
 
 
 }
